@@ -161,7 +161,7 @@ authRoutes.post('/plex', async (req, res, next) => {
           });
         } else {
           logger.info(
-            'Sign-in attempt from Plex user with access to the media server; creating new Seerr user',
+            'Sign-in attempt from Plex user with access to the media server; creating new SethFlix user',
             {
               label: 'API',
               ip: req.ip,
@@ -331,7 +331,7 @@ authRoutes.post('/jellyfin', async (req, res, next) => {
 
       if (missingAdminUser) {
         logger.info(
-          'Sign-in attempt from Jellyfin user with access to the media server; creating initial admin user for Seerr',
+          'Sign-in attempt from Jellyfin user with access to the media server; creating initial admin user for SethFlix',
           {
             label: 'API',
             ip: req.ip,
@@ -360,7 +360,7 @@ authRoutes.post('/jellyfin', async (req, res, next) => {
         await userRepository.save(user);
       } else {
         logger.info(
-          'Sign-in attempt from Jellyfin user with access to the media server; editing admin user for Seerr',
+          'Sign-in attempt from Jellyfin user with access to the media server; editing admin user for SethFlix',
           {
             label: 'API',
             ip: req.ip,
@@ -397,7 +397,7 @@ authRoutes.post('/jellyfin', async (req, res, next) => {
         account.AccessToken,
         deviceId
       );
-      const apiKey = await jellyfinClient.createApiToken('Seerr');
+      const apiKey = await jellyfinClient.createApiToken('SethFlix');
 
       const serverName = await jellyfinserver.getServerName();
 
@@ -453,7 +453,7 @@ authRoutes.post('/jellyfin', async (req, res, next) => {
       });
     } else if (!user) {
       logger.info(
-        'Sign-in attempt from Jellyfin user with access to the media server; creating new Seerr user',
+        'Sign-in attempt from Jellyfin user with access to the media server; creating new SethFlix user',
         {
           label: 'API',
           ip: req.ip,
@@ -613,7 +613,7 @@ authRoutes.post('/local', async (req, res, next) => {
       .getOne();
 
     if (!user || !(await user.passwordMatch(body.password))) {
-      logger.warn('Failed sign-in attempt using invalid Seerr password', {
+      logger.warn('Failed sign-in attempt using invalid SethFlix password', {
         label: 'API',
         ip: req.ip,
         email: body.email,
@@ -632,7 +632,7 @@ authRoutes.post('/local', async (req, res, next) => {
 
     return res.status(200).json(user?.filter() ?? {});
   } catch (e) {
-    logger.error('Something went wrong authenticating with Seerr password', {
+    logger.error('Something went wrong authenticating with SethFlix password', {
       label: 'API',
       errorMessage: e.message,
       ip: req.ip,
@@ -671,7 +671,7 @@ authRoutes.post('/logout', async (req, res, next) => {
             await axios.delete(`${baseUrl}/Devices`, {
               params: { Id: user.jellyfinDeviceId },
               headers: {
-                'X-Emby-Authorization': `MediaBrowser Client="Seerr", Device="Seerr", DeviceId="seerr", Version="${getAppVersion()}", Token="${
+                'X-Emby-Authorization': `MediaBrowser Client="SethFlix", Device="SethFlix", DeviceId="seerr", Version="${getAppVersion()}", Token="${
                   settings.jellyfin.apiKey
                 }"`,
               },

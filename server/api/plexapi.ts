@@ -115,9 +115,9 @@ class PlexAPI extends ExternalAPI {
         headers: {
           'X-Plex-Token': plexToken ?? '',
           'X-Plex-Client-Identifier': settings.clientId,
-          'X-Plex-Product': 'Seerr',
-          'X-Plex-Device-Name': 'Seerr',
-          'X-Plex-Platform': 'Seerr',
+          'X-Plex-Product': 'SethFlix',
+          'X-Plex-Device-Name': 'SethFlix',
+          'X-Plex-Platform': 'SethFlix',
         },
       }
     );

@@ -46,7 +46,7 @@ import YAML from 'yamljs';
 
 const API_SPEC_PATH = path.join(__dirname, '../seerr-api.yml');
 
-logger.info(`Starting Seerr version ${getAppVersion()}`);
+logger.info(`Starting SethFlix version ${getAppVersion()}`);
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -60,7 +60,7 @@ if (!appDataPermissions()) {
 app
   .prepare()
   .then(async () => {
-    // Run Overseerr to Seerr migration
+    // Run Overseerr to SethFlix migration
     await checkOverseerrMerge();
 
     const dbConnection = dataSource.isInitialized
