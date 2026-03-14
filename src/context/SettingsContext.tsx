@@ -10,7 +10,7 @@ export interface SettingsContextProps {
 
 const defaultSettings = {
   initialized: false,
-  applicationTitle: 'Seerr',
+  applicationTitle: 'SethFlix',
   applicationUrl: '',
   hideAvailable: false,
   hideBlocklisted: false,

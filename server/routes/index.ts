@@ -56,7 +56,7 @@ router.get<unknown, StatusResponse>('/status', async (req, res) => {
   let commitsBehind = 0;
 
   if (currentVersion.startsWith('develop-') && commitTag !== 'local') {
-    const commits = await githubApi.getSeerrCommits();
+    const commits = await githubApi.getSethFlixCommits();
 
     if (commits.length) {
       const filteredCommits = commits.filter(
@@ -75,7 +75,7 @@ router.get<unknown, StatusResponse>('/status', async (req, res) => {
       }
     }
   } else if (commitTag !== 'local') {
-    const releases = await githubApi.getSeerrReleases();
+    const releases = await githubApi.getSethFlixReleases();
 
     if (releases.length) {
       const latestVersion = releases[0];
@@ -456,7 +456,7 @@ router.get('/certifications/tv', isAuthenticated(), async (req, res, next) => {
 
 router.get('/', (_req, res) => {
   return res.status(200).json({
-    api: 'Seerr API',
+    api: 'SethFlix API',
     version: '1.0',
   });
 });

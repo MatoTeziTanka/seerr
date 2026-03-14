@@ -138,10 +138,10 @@ const checkOverseerrMerge = async (): Promise<boolean> => {
 
   // Replace default Overseerr values with Seerr values
   if (settings.main.applicationTitle === 'Overseerr') {
-    settings.main.applicationTitle = 'Seerr';
+    settings.main.applicationTitle = 'SethFlix';
   }
   if (settings.notifications.agents.email.options.senderName === 'Overseerr') {
-    settings.notifications.agents.email.options.senderName = 'Seerr';
+    settings.notifications.agents.email.options.senderName = 'SethFlix';
   }
 
   // Save the updated settings
@@ -155,7 +155,7 @@ const checkOverseerrMerge = async (): Promise<boolean> => {
     process.exit(1);
   }
 
-  logger.info('Yeah! Overseerr to Seerr migration completed successfully!', {
+  logger.info('Yeah! Overseerr to SethFlix migration completed successfully!', {
     label: 'Seerr Migration',
   });
 

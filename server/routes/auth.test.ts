@@ -180,7 +180,7 @@ describe('POST /auth/local', () => {
   it('is case-insensitive for email', async () => {
     const res = await request(app)
       .post('/auth/local')
-      .send({ email: 'Admin@Seerr.Dev', password: 'test1234' });
+      .send({ email: 'Admin@SethFlix.Dev', password: 'test1234' });
 
     assert.strictEqual(res.status, 200);
     assert.ok('id' in res.body);
